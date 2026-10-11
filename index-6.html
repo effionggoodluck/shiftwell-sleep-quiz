@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ShiftWell | Find Your Exact Insomnia Pattern</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0F1E3D;--cream:#F7F4EE;--amber:#E8A33D;--ink:#1A1A1A;--muted:#6B7280;--bg:var(--cream);--card:#fff;--fg:var(--ink);--mu:var(--muted);--line:#E4DED0;--hd:var(--navy);--ok:#3E8E6B;--bad:#C0504D;--fc:var(--navy);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1630;--card:#14234A;--fg:#F2EFE8;--mu:#A9B2C4;--line:#25365F;--hd:#F7F4EE;--fc:var(--amber);--bad:#F08A85}}
+:root[data-theme="dark"]{--bg:#0B1630;--card:#14234A;--fg:#F2EFE8;--mu:#A9B2C4;--line:#25365F;--hd:#F7F4EE;--fc:var(--amber);--bad:#F08A85}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;transition:background .2s ease}
+.w{max-width:640px;margin:0 auto;padding:20px 20px 40px}
+.wm{font-weight:700;font-size:20px;color:var(--hd)}
+h1,h2{color:var(--hd);line-height:1.15;margin:0 0 12px;font-weight:700}
+h1{font-size:clamp(28px,7vw,38px)}h2{font-size:clamp(21px,5vw,25px);margin-top:26px}
+.card h2,main>h2:first-child{margin-top:0}
+p{margin:0 0 14px}.sub{font-size:18px}.sm{font-size:14px;color:var(--mu)}.c{text-align:center}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin:0 0 16px;transition:all .2s ease}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;padding:0 24px;border:0;border-radius:14px;background:var(--amber);color:var(--navy);font:700 17px Inter,system-ui,sans-serif;text-decoration:none;cursor:pointer;transition:all .2s ease}
+.btn:hover{filter:brightness(1.06)}
+.lk{background:none;border:0;color:var(--mu);font:600 15px Inter,system-ui,sans-serif;min-height:48px;padding:0 4px;margin-top:8px;cursor:pointer}
+:focus-visible{outline:3px solid var(--fc);outline-offset:3px}
+main{padding-top:28px;transition:opacity .2s ease,transform .2s ease}main.out{opacity:0;transform:translateY(6px)}main:focus{outline:none}
+#pg{margin-top:20px}#pl{font-size:14px;color:var(--mu);margin:8px 0 0}
+.tr{height:8px;border-radius:8px;background:var(--line);overflow:hidden}.tr i{display:block;height:100%;background:var(--amber);transition:width .2s ease}
+.opt{display:block;width:100%;text-align:left;min-height:52px;padding:14px 16px;margin:0 0 10px;border:1.5px solid var(--line);border-radius:16px;background:var(--card);color:var(--fg);font:600 16px/1.35 Inter,system-ui,sans-serif;cursor:pointer;transition:all .2s ease}
+.opt:hover{border-color:var(--amber)}.opt[aria-pressed="true"]{border-color:var(--amber);box-shadow:0 0 0 2px var(--amber)}
+.opt.m::before{content:"";display:inline-block;width:18px;height:18px;border:2px solid var(--mu);border-radius:5px;margin-right:12px;vertical-align:-3px;transition:all .2s ease}
+.opt.m[aria-pressed="true"]::before{background:var(--amber);border-color:var(--amber)}
+.g3{display:grid;gap:10px;margin:28px 0}.g3 .card{margin:0;padding:16px;font-weight:600}
+@media(min-width:768px){.g3{grid-template-columns:repeat(3,1fr)}}
+label{display:block;font-weight:600;margin:14px 0 6px}
+input{width:100%;min-height:48px;padding:0 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--fg);font:400 16px Inter,system-ui,sans-serif}
+input.bad{border-color:var(--bad)}.er{color:var(--bad);font-size:14px;margin:6px 0 0}.fm{margin:16px 0 14px}
+.big{font-size:64px;font-weight:700;line-height:1.05;color:var(--hd)}.big small{font-size:24px;color:var(--mu)}
+.bt{height:14px;border-radius:14px;background:var(--line);overflow:hidden;margin:14px 0 8px}.bt i{display:block;height:100%;border-radius:14px;transition:width .2s ease}
+ul.b{padding-left:20px;margin:0 0 14px}ul.b li{margin-bottom:6px}
+ol.pl{list-style:none;padding:0;margin:0 0 14px;counter-reset:d}ol.pl li{counter-increment:d;margin-bottom:14px}ol.pl li::before{content:"Day " counter(d);display:block;font-weight:700;color:var(--hd)}
+.warn{border:2px solid var(--amber);background:rgba(232,163,61,.14);border-radius:16px;padding:16px 18px;margin:0 0 16px;font-weight:600}
+.cta{background:var(--navy);border-color:var(--amber);color:#F7F4EE}.cta h2{color:#F7F4EE}.pr{text-align:center;font-weight:700;margin:12px 0 0}
+footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--mu)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="w">
+<header><span class="wm">ShiftWell</span></header>
+<div id="pg" hidden><div class="tr" role="progressbar" aria-label="Quiz progress" aria-valuemin="1" aria-valuemax="12"><i></i></div><p id="pl" aria-live="polite"></p></div>
+<main id="m" tabindex="-1"></main>
+<footer>ShiftWell is an educational resource. This is not medical advice and is not a substitute for diagnosis or treatment. Consult a licensed healthcare provider for persistent sleep problems.</footer>
+</div>
+<script>
+/* ===== CONFIG ===== */
+const CONFIG={
+ REVIEWER_LINE:"[LICENSED REVIEWER NAME, CREDENTIAL]",
+ GUIDE_URL:"https://selar.com/shiftwell6",
+ GUIDE_PRICE:"[YOUR PRICE]"
+};
+const on=v=>!!v&&!/^\[.*\]$/.test(v.trim());
+
+function logEvents(name,data){console.log("[ShiftWell event]",name,data||{});}
+
+function sendLeadToEmailPlatform(leadData){
+ console.log("[ShiftWell lead]",leadData);
+ try{
+  state.sent=state.sent||{};
+  if(!leadData.email||state.sent[leadData.email])return;
+  state.sent[leadData.email]=1;save();
+  const id="kit"+Date.now(),fr=document.createElement("iframe"),f=document.createElement("form");
+  fr.name=id;fr.hidden=true;fr.title="";fr.setAttribute("aria-hidden","true");
+  f.action="https://app.kit.com/forms/10025213/subscriptions";f.method="post";f.target=id;f.hidden=true;
+  [["email_address",leadData.email],["fields[first_name]",leadData.name]].forEach(([k,v])=>{const i=document.createElement("input");i.name=k;i.value=v||"";f.appendChild(i)});
+  document.body.append(fr,f);f.submit();
+  setTimeout(()=>{fr.remove();f.remove()},20000);
+ }catch(e){console.error("Kit send failed",e)}
+}
+
+const Q=[
+{t:"What's your age range?",o:["Under 25","25–34","35–44","45–54","55+"]},
+{t:"What's your main sleep struggle?",o:["I can't fall asleep — my mind races","I wake up at 2–4am and can't go back to sleep","I'm exhausted but wired — can't switch off","I'm anxious about sleep itself","My schedule is irregular (shift work)","My partner, pet, or environment disrupts me","My sleep got worse after stress, travel, or illness"]},
+{t:"How much is this affecting your daily life?",o:["Mildly","Moderately","Severely","It's taking over my life"],s:[1,2,3,4]},
+{t:"How long have you been dealing with this?",o:["Less than 2 weeks","2–8 weeks","2–6 months","6–12 months","Over a year"],s:[1,2,3,3,4]},
+{t:"Select everything you experience:",m:1,o:["Mind racing at bedtime","Waking at 3am wide awake","Night sweats or overheating","Racing heart at night","Daytime fatigue","Brain fog","Irritability or low mood","Loud snoring or gasping","Needing the bathroom at night","Restless legs"]},
+{t:"What does your evening usually look like?",m:1,o:["Screens until bedtime","Caffeine after 2pm","Alcohol in the evening","Late heavy meals","Irregular bedtime","Stressful evenings / work late","Active exercise close to bed"]},
+{t:"What have you already tried?",m:1,o:["Nothing yet","Sleep hygiene advice","Melatonin or supplements","Meditation or breathing apps","Medication from a doctor","Cutting caffeine","Changing my bedroom"]},
+{t:"If you slept well consistently, what would change first?",o:["More energy","Better focus at work","Better mood","Better relationships","Less anxiety","Better health overall"]},
+{t:"Which feels most true right now?",o:["My body clock feels broken","My mind won't shut off","I've forgotten what normal sleep feels like","I'm scared this will never get better"]},
+{t:"Do you prefer a guided plan or figuring it out yourself?",o:["Guided, step-by-step","A mix of both","I'll figure it out"]},
+{t:"How ready are you to fix this?",o:["Just exploring","Ready to try something","Ready to commit fully"],s:[1,2,3]},
+{t:"Email"}];
+
+const S={
+A:{h:"The Racing Mind",m:"Your body is tired but your brain hasn't received the signal that the day is over. This usually isn't a sleep problem — it's an unwinding problem. The transition from active to restful isn't happening, so your nervous system stays on guard at exactly the moment it should be powering down.",w:["Racing thoughts often peak when stimulation stops","Caffeine and screens delay the natural wind-down signal","Stress keeps the nervous system in a low-level alert state"],p:["Set a fixed 'stimulation curfew': no screens or work 45 minutes before bed.","Write tomorrow's worries on paper before bed. Externalize, don't rehearse.","Add a 4-7-8 breathing round when you get into bed. Slow exhale signals safety."]},
+B:{h:"The 3AM Wake-Up",m:"Waking in the early hours is one of the most common and most misunderstood sleep patterns. It's rarely about needing more sleep — it's usually about what your body clock and stress system are doing in the second half of the night. Many people wake briefly and fall back asleep without noticing. For you, the waking is sticking — and that's the part we can work on.",w:["Blood sugar and cortisol rhythms shift in the early hours","Alcohol and late meals fragment the second half of sleep","A brief waking becomes a wakeful spiral when the mind engages"],p:["Note your last meal and last drink time for one night. Don't change anything yet — just observe.","Move your last caffeine to before 12pm and your last meal to 3 hours before bed.","If you wake at 3am, do not check the time. Stay in bed, eyes closed, slow breathing for 15 minutes."]},
+C:{h:"Tired But Wired",m:"You're running on empty but your system won't let you rest. This is the signature of an over-activated nervous system — the body is exhausted but the alert switch never fully turns off. It's common in people who are high-functioning during the day and crash mentally at night.",w:["Sustained stress keeps the alert system engaged","Caffeine masks fatigue and delays the crash","The body confuses stillness with danger when it's been on high alert for too long"],p:["Cap caffeine at 2 drinks, both before noon.","Add 10 minutes of daylight within an hour of waking. This anchors your clock.","Do 5 minutes of slow movement (not intense exercise) at 8pm to discharge residual activation."]},
+D:{h:"Sleep Anxiety",m:"At some point, sleep stopped being automatic and became something you have to try to do. That effort itself is the problem — sleep is one of the few things that gets harder the more you chase it. The dread at bedtime is real and it's a recognised pattern. It's not weakness, and it's very workable.",w:["One bad stretch of sleep trains the brain to see bedtime as a threat","Clock-watching adds pressure that keeps the system alert","The harder you try, the more the body resists"],p:["Turn every clock in the bedroom away from you. No time-checking after lights out.","If you're still awake after 20 minutes, get up and read somewhere dim until sleepy. Return only when drowsy.","Replace 'I must sleep' with 'I'm resting.' Rest still counts. This lowers the stakes."]},
+E:{h:"Clock Disruption",m:"Your body clock is being asked to do something it wasn't designed for — sleep at times that don't match your internal rhythm. This isn't a discipline problem, it's a timing problem. The good news is that timing problems respond very well to structured routines.",w:["Light exposure at the wrong times confuses the body clock","Rotating shifts prevent the clock from settling","Sleep debt accumulates faster when timing is inconsistent"],p:["Pick one anchor sleep window and protect it on your days off. Same time, both days.","Get bright light in the first 30 minutes after waking, whatever time that is.","Wear sunglasses on the commute home if you're coming off a night shift. Block the morning light signal."]},
+F:{h:"Disrupted Environment",m:"Your sleep is being interrupted by things outside your control — and interrupted sleep is different from short sleep. Even brief awakenings fragment the deep stages that do the real restorative work. The fix here is often more practical than people expect.",w:["Fragmented sleep reduces deep sleep even when total hours look fine","Temperature, light, and noise have outsized effects on sleep depth","Unpredictable interruptions keep the nervous system on alert"],p:["Audit your bedroom for three things only: light, sound, temperature. Note each.","Fix the cheapest one first — usually blackout coverage or earplugs.","Have the conversation you've been avoiding with your partner, or set a pet boundary. Practical beats perfect."]},
+G:{h:"Rebound Insomnia",m:"Your sleep was fine before — and then something happened. Rebound insomnia is one of the most treatable patterns because your body already knows how to sleep well. It just needs help finding its way back to the rhythm it had before.",w:["Illness, travel, and stress can shift the body clock","The brain learns to associate bedtime with difficulty","The longer it goes on, the more the pattern reinforces itself"],p:["Write down the exact week your sleep changed. Naming the trigger reduces its grip.","Set a fixed wake time — not bedtime — and hold it for the next 14 days. Wake time anchors the clock.","Get outside within an hour of waking. Daylight is the strongest clock signal you have."]}};
+
+let state=(()=>{try{return JSON.parse(sessionStorage.getItem("sw"))}catch(e){}})()||{view:"landing",q:0,a:{},lead:null,pdf:false,p:{}};
+const M=document.getElementById("m"),PG=document.getElementById("pg"),PL=document.getElementById("pl");
+const save=()=>{try{sessionStorage.setItem("sw",JSON.stringify(state))}catch(e){}};
+const esc=s=>(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function derive(){const a=state.a;state.p={PRIMARY_SEGMENT:a[1]!=null?"ABCDEFG"[a[1]]:null,MOTIVATION:a[7]!=null?Q[7].o[a[7]]:null,EMOTIONAL_TAG:a[8]!=null?Q[8].o[a[8]]:null,RED_FLAG:(a[4]||[]).includes(7)};}
+function score(){let t=0,a=state.a;[2,3,10].forEach(i=>t+=Q[i].s[a[i]]||0);[4,5].forEach(i=>t+=(a[i]||[]).length);return Math.round(t/28*100);}
+
+const back=()=>state.q>0?'<button type="button" class="lk" data-a="back">← Back</button>':"";
+const form=(p,btn,x)=>{const L=state.lead||{};return `<form id="${p}" novalidate><label for="${p}n">First name</label><input id="${p}n" name="n" autocomplete="given-name" value="${esc(L.name)}"><p class="er" id="${p}ne" role="alert"></p><label for="${p}e">Email address</label><input id="${p}e" name="e" type="email" inputmode="email" autocomplete="email" value="${esc(L.email)}"><p class="er" id="${p}ee" role="alert"></p>${x||""}<button class="btn">${btn}</button></form>`};
+
+function vLanding(){return `<h1>Stop Googling Sleep Tips. Find Your Exact Insomnia Pattern in 2 Minutes.</h1>
+<p class="sub">Answer 12 questions. Get a personalized sleep profile, your Sleep Health Score, and a 3-day starter plan — free.</p>
+<button class="btn" data-a="start">Start My Sleep Assessment →</button>
+<p class="sm c" style="margin-top:12px">Free. No credit card. Takes 2 minutes.</p>
+${on(CONFIG.REVIEWER_LINE)?`<p class="sm c">Reviewed by ${esc(CONFIG.REVIEWER_LINE)}</p>`:""}
+<div class="g3"><div class="card">Personalized — not generic advice</div><div class="card">Based on your specific sleep pattern</div><div class="card">Educational and evidence-informed</div></div>`}
+
+function vQuiz(){const i=state.q,q=Q[i];
+ if(i==11)return `<h2>Where should we send your personalized results?</h2>${form("l","See My Results →",'<p class="sm fm">We\'ll email your results summary. You can also download the full PDF right after. No spam. Unsubscribe anytime.</p>')}${back()}`;
+ const a=state.a[i];
+ return `<h2>${q.t}</h2><div role="group" aria-label="${q.t}">${q.o.map((o,k)=>`<button type="button" class="opt${q.m?" m":""}" data-a="opt" data-i="${k}" aria-pressed="${q.m?(a||[]).includes(k):a===k}">${o}</button>`).join("")}</div>${q.m?'<button class="btn" data-a="next">Next →</button>':""}${back()}`}
+
+function vResult(){const sc=score(),s=S[state.p.PRIMARY_SEGMENT]||S.A,col=sc<35?"var(--ok)":sc<=65?"var(--amber)":"var(--bad)",flag=state.p.RED_FLAG||state.a[3]===4;
+ return `<section class="card" aria-label="Sleep Health Score"><p class="sm" style="margin:0">Your Sleep Health Score:</p><div class="big">${sc}<small>/100</small></div><div class="bt"><i style="width:${sc}%;background:${col}"></i></div><p class="sm" style="margin:0"><b>Lower is better.</b></p></section>
+<h1>Your Pattern: ${s.h}</h1>
+<h2>What this means</h2><p>${s.m}</p>
+<h2>Why this happens</h2><ul class="b">${s.w.map(x=>`<li>${x}</li>`).join("")}</ul>
+<h2>Your 3-Day Starter Plan</h2><ol class="pl">${s.p.map(x=>`<li>${x}</li>`).join("")}</ol>
+${flag?'<div class="warn" role="note">Some of what you described is worth discussing with a doctor. This guide is educational and does not replace medical assessment.</div>':""}
+${on(CONFIG.GUIDE_URL)?`<section class="card cta"><h2>Your Full 14-Day Reset Plan</h2><p>The 3-day starter is a beginning. The complete system — your full sleep profile breakdown, the 14-day reset calendar, sleep diary, 3AM emergency card, and wind-down audio — is in Understanding Your Body Clock.</p><a class="btn" data-a="cta" href="${esc(CONFIG.GUIDE_URL)}" target="_blank" rel="noopener">Get The Full Guide →</a>${on(CONFIG.GUIDE_PRICE)?`<p class="pr">${esc(CONFIG.GUIDE_PRICE)}</p>`:""}</section>`:""}
+<section class="card">
+<h2>Download your free Sleep Profile PDF</h2>
+<p>Get a 2-page PDF with space for your score, your pattern explanation, and a full 7-day starter plan. The PDF also includes a direct link to the full guide.</p>
+<a class="btn" href="ShiftWell-Sleep-Profile.pdf" download data-a="pdf_download">Download Free PDF →</a>
+</section>`}
+
+function render(){derive();save();PG.hidden=state.view!="quiz";
+ if(!PG.hidden){const n=state.q+1,t=`Question ${n} of 12`,bar=PG.firstElementChild;if(PL.textContent!=t)PL.textContent=t;bar.setAttribute("aria-valuenow",n);bar.firstElementChild.style.width=n/12*100+"%"}
+ M.innerHTML=({landing:vLanding,quiz:vQuiz,result:vResult})[state.view]()}
+function go(){M.classList.add("out");setTimeout(()=>{render();M.classList.remove("out");scrollTo(0,0);M.focus({preventScroll:true})},200)}
+function adv(){const i=state.q,v=state.a[i],o=Q[i].o;logEvents("question_answered",{question:i+1,answer:Q[i].m?(v||[]).map(k=>o[k]):o[v]});state.q++;go()}
+let lock=0;
+M.onclick=e=>{const b=e.target.closest("[data-a]");if(!b)return;const x=b.dataset.a,i=state.q;
+ if(x=="start"){state.view="quiz";state.q=0;if(!Object.keys(state.a).length)logEvents("quiz_start");go()}
+ else if(x=="back"){state.q--;go()}
+ else if(x=="next")adv();
+ else if(x=="cta")logEvents("primary_cta_click",{segment:state.p.PRIMARY_SEGMENT,score:score()});
+ else if(x=="pdf_download")logEvents("pdf_download_click",{segment:state.p.PRIMARY_SEGMENT,score:score()});
+ else if(x=="opt"){const k=+b.dataset.i,q=Q[i];
+  if(q.m){let s=state.a[i]||[];s=s.includes(k)?s.filter(n=>n!=k):[...s,k];if(i==6)s=k==0?(s.includes(0)?[0]:[]):s.filter(n=>n);state.a[i]=s;render();M.querySelector(`[data-i="${k}"]`).focus()}
+  else{if(lock)return;state.a[i]=k;render();M.querySelector(`[data-i="${k}"]`).focus();lock=1;setTimeout(()=>{lock=0;if(state.q==i)adv()},280)}}};
+function val(f){const n=f.n.value.trim(),e=f.e.value.trim();let ok=true;
+ const set=(el,id,msg)=>{el.classList.toggle("bad",!!msg);document.getElementById(f.id+id).textContent=msg||"";if(msg)ok=false};
+ set(f.n,"ne",n?"":"Please enter your first name.");
+ set(f.e,"ee",/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)?"":"Please enter a valid email address.");
+ return ok?{name:n,email:e}:null}
+M.onsubmit=e=>{e.preventDefault();const f=e.target,L=val(f);if(!L)return;state.lead=L;derive();
+ const d={...L,score:score(),...state.p,answers:state.a};
+ if(f.id=="l"){logEvents("quiz_complete",{score:d.score,segment:d.PRIMARY_SEGMENT});sendLeadToEmailPlatform({...d,source:"quiz"});state.view="result";go()}
+ else{logEvents("secondary_email_submit",{segment:d.PRIMARY_SEGMENT});sendLeadToEmailPlatform({...d,source:"pdf_offer"});state.pdf=true;render()}};
+render();
+</script>
+</body>
+</html>
