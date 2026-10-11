@@ -117,7 +117,7 @@ function score(){let t=0,a=state.a;[2,3,10].forEach(i=>t+=Q[i].s[a[i]]||0);[4,5]
 
 /* ===== VIEWS ===== */
 const back=()=>state.q>0?'<button type="button" class="lk" data-a="back">← Back</button>':"";
-const form=(p,btn,x)=>{const L=state.lead||{};return `<form id="${p}" novalidate><label for="${p}n">First name</label><input id="${p}n" name="n" autocomplete="given-name" value="${esc(L.name)}"><p class="er" id="${p}ne" role="alert"></p><label for="${p}e">Email address</label><input id="${p}e" name="e" type="email" inputmode="email" autocomplete="email" value="${esc(L.email)}"><p class="er" id="${p}ee" role="alert"></p>${x||""}<button class="btn">${btn}</button></form>`};
+const form=(p,btn,x)=>{const L=state.lead||{};return `<form id="\( {p}" novalidate><label for=" \){p}n">First name</label><input id="\( {p}n" name="n" autocomplete="given-name" value=" \){esc(L.name)}"><p class="er" id="\( {p}ne" role="alert"></p><label for=" \){p}e">Email address</label><input id="\( {p}e" name="e" type="email" inputmode="email" autocomplete="email" value=" \){esc(L.email)}"><p class="er" id="\( {p}ee" role="alert"></p> \){x||""}<button class="btn">${btn}</button></form>`};
 function vLanding(){return `<h1>Stop Googling Sleep Tips. Find Your Exact Insomnia Pattern in 2 Minutes.</h1>
 <p class="sub">Answer 12 questions. Get a personalized sleep profile, your Sleep Health Score, and a 3-day starter plan — free.</p>
 <button class="btn" data-a="start">Start My Sleep Assessment →</button>
@@ -125,18 +125,22 @@ function vLanding(){return `<h1>Stop Googling Sleep Tips. Find Your Exact Insomn
 ${on(CONFIG.REVIEWER_LINE)?`<p class="sm c">Reviewed by ${esc(CONFIG.REVIEWER_LINE)}</p>`:""}
 <div class="g3"><div class="card">Personalized — not generic advice</div><div class="card">Based on your specific sleep pattern</div><div class="card">Educational and evidence-informed</div></div>`}
 function vQuiz(){const i=state.q,q=Q[i];
- if(i==11)return `<h2>Where should we send your personalized results?</h2>${form("l","See My Results →",'<p class="sm fm">We\'ll send your Sleep Profile and 3-Day Starter Plan. No spam. Unsubscribe anytime.</p>')}${back()}`;
+ if(i==11)return `<h2>Where should we send your personalized results?</h2>\( {form("l","See My Results →",'<p class="sm fm">We\'ll email your results summary. You can also download the full PDF right after. No spam. Unsubscribe anytime.</p>')} \){back()}`;
  const a=state.a[i];
- return `<h2>${q.t}</h2><div role="group" aria-label="${q.t}">${q.o.map((o,k)=>`<button type="button" class="opt${q.m?" m":""}" data-a="opt" data-i="${k}" aria-pressed="${q.m?(a||[]).includes(k):a===k}">${o}</button>`).join("")}</div>${q.m?'<button class="btn" data-a="next">Next →</button>':""}${back()}`}
+ return `<h2>\( {q.t}</h2><div role="group" aria-label=" \){q.t}">\( {q.o.map((o,k)=>`<button type="button" class="opt \){q.m?" m":""}" data-a="opt" data-i="\( {k}" aria-pressed=" \){q.m?(a||[]).includes(k):a===k}">\( {o}</button>`).join("")}</div> \){q.m?'<button class="btn" data-a="next">Next →</button>':""}${back()}`}
 function vResult(){const sc=score(),s=S[state.p.PRIMARY_SEGMENT]||S.A,col=sc<35?"var(--ok)":sc<=65?"var(--amber)":"var(--bad)",flag=state.p.RED_FLAG||state.a[3]===4,L=state.lead||{};
- return `<section class="card" aria-label="Sleep Health Score"><p class="sm" style="margin:0">Your Sleep Health Score:</p><div class="big">${sc}<small>/100</small></div><div class="bt"><i style="width:${sc}%;background:${col}"></i></div><p class="sm" style="margin:0"><b>Lower is better.</b></p></section>
+ return `<section class="card" aria-label="Sleep Health Score"><p class="sm" style="margin:0">Your Sleep Health Score:</p><div class="big">\( {sc}<small>/100</small></div><div class="bt"><i style="width: \){sc}%;background:${col}"></i></div><p class="sm" style="margin:0"><b>Lower is better.</b></p></section>
 <h1>Your Pattern: ${s.h}</h1>
 <h2>What this means</h2><p>${s.m}</p>
-<h2>Why this happens</h2><ul class="b">${s.w.map(x=>`<li>${x}</li>`).join("")}</ul>
-<h2>Your 3-Day Starter Plan</h2><ol class="pl">${s.p.map(x=>`<li>${x}</li>`).join("")}</ol>
+<h2>Why this happens</h2><ul class="b">\( {s.w.map(x=>`<li> \){x}</li>`).join("")}</ul>
+<h2>Your 3-Day Starter Plan</h2><ol class="pl">\( {s.p.map(x=>`<li> \){x}</li>`).join("")}</ol>
 ${flag?'<div class="warn" role="note">Some of what you described is worth discussing with a doctor. This guide is educational and does not replace medical assessment.</div>':""}
-${on(CONFIG.GUIDE_URL)?`<section class="card cta"><h2>Your Full 14-Day Reset Plan</h2><p>The 3-day starter is a beginning. The complete system — your full sleep profile breakdown, the 14-day reset calendar, sleep diary, 3AM emergency card, and wind-down audio — is in Understanding Your Body Clock.</p><a class="btn" data-a="cta" href="${esc(CONFIG.GUIDE_URL)}" target="_blank" rel="noopener">Get The Full Guide →</a>${on(CONFIG.GUIDE_PRICE)?`<p class="pr">${esc(CONFIG.GUIDE_PRICE)}</p>`:""}</section>`:""}
-${state.pdf?`<section class="card"><h2>Thank you, ${esc(L.name)}</h2><p>Your Sleep Profile PDF is on its way to ${esc(L.email)}.</p></section>`:`<section class="card"><h2>Want your full profile as a PDF?</h2><p>Get a personalized 2-page Sleep Profile PDF with your score, your pattern breakdown, and a 7-day starter plan — emailed to you free.</p>${form("p","Send My Free PDF →")}</section>`}`}
+\( {on(CONFIG.GUIDE_URL)?`<section class="card cta"><h2>Your Full 14-Day Reset Plan</h2><p>The 3-day starter is a beginning. The complete system — your full sleep profile breakdown, the 14-day reset calendar, sleep diary, 3AM emergency card, and wind-down audio — is in Understanding Your Body Clock.</p><a class="btn" data-a="cta" href=" \){esc(CONFIG.GUIDE_URL)}" target="_blank" rel="noopener">Get The Full Guide →</a>\( {on(CONFIG.GUIDE_PRICE)?`<p class="pr"> \){esc(CONFIG.GUIDE_PRICE)}</p>`:""}</section>`:""}
+<section class="card">
+<h2>Download your free Sleep Profile PDF</h2>
+<p>Get a 2-page PDF with space for your score, your pattern explanation, and a full 7-day starter plan. The PDF also includes a direct link to the full guide.</p>
+<a class="btn" href="ShiftWell-Sleep-Profile.pdf" download data-a="pdf_download">Download Free PDF →</a>
+</section>`}
 
 /* ===== RENDER + EVENTS ===== */
 function render(){derive();save();PG.hidden=state.view!="quiz";
@@ -145,24 +149,4 @@ function render(){derive();save();PG.hidden=state.view!="quiz";
 function go(){M.classList.add("out");setTimeout(()=>{render();M.classList.remove("out");scrollTo(0,0);M.focus({preventScroll:true})},200)}
 function adv(){const i=state.q,v=state.a[i],o=Q[i].o;logEvents("question_answered",{question:i+1,answer:Q[i].m?(v||[]).map(k=>o[k]):o[v]});state.q++;go()}
 let lock=0;
-M.onclick=e=>{const b=e.target.closest("[data-a]");if(!b)return;const x=b.dataset.a,i=state.q;
- if(x=="start"){state.view="quiz";state.q=0;if(!Object.keys(state.a).length)logEvents("quiz_start");go()}
- else if(x=="back"){state.q--;go()}
- else if(x=="next")adv();
- else if(x=="cta")logEvents("primary_cta_click",{segment:state.p.PRIMARY_SEGMENT,score:score()});
- else if(x=="opt"){const k=+b.dataset.i,q=Q[i];
-  if(q.m){let s=state.a[i]||[];s=s.includes(k)?s.filter(n=>n!=k):[...s,k];if(i==6)s=k==0?(s.includes(0)?[0]:[]):s.filter(n=>n);state.a[i]=s;render();M.querySelector(`[data-i="${k}"]`).focus()}
-  else{if(lock)return;state.a[i]=k;render();M.querySelector(`[data-i="${k}"]`).focus();lock=1;setTimeout(()=>{lock=0;if(state.q==i)adv()},280)}}};
-function val(f){const n=f.n.value.trim(),e=f.e.value.trim();let ok=true;
- const set=(el,id,msg)=>{el.classList.toggle("bad",!!msg);document.getElementById(f.id+id).textContent=msg||"";if(msg)ok=false};
- set(f.n,"ne",n?"":"Please enter your first name.");
- set(f.e,"ee",/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)?"":"Please enter a valid email address.");
- return ok?{name:n,email:e}:null}
-M.onsubmit=e=>{e.preventDefault();const f=e.target,L=val(f);if(!L)return;state.lead=L;derive();
- const d={...L,score:score(),...state.p,answers:state.a};
- if(f.id=="l"){logEvents("quiz_complete",{score:d.score,segment:d.PRIMARY_SEGMENT});sendLeadToEmailPlatform({...d,source:"quiz"});state.view="result";go()}
- else{logEvents("secondary_email_submit",{segment:d.PRIMARY_SEGMENT});sendLeadToEmailPlatform({...d,source:"pdf_offer"});state.pdf=true;render()}};
-render();
-</script>
-</body>
-</html>
+M.onclick=
